@@ -37,6 +37,8 @@ void Delete(Node** pointerToHead, int index){
         delete(nodePointer);
         return;
     }
+    
+    //why index - 2?? while running a loop from 0 to index, it will run index number of times. But we want it a to point a node earlier to our index node, so, index - 1. Also, notice that we're already at node#1 ( Noed* nodePointer = *pointerToHead) so -> index - 2. 
     for(int i = 0; i< index - 2; i++){
         nodePointer = nodePointer->next; 
     }
