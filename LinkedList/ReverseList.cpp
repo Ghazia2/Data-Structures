@@ -54,15 +54,25 @@ void ReverseList(Node** pointerToHead){
 }
 
 // using recursive method
-void ReverseList(Node** pointerToHead, Node* prev, Node* current){
-    if(current == NULL){
-        Node* firstNode = *pointerToHead; 
-        firstNode->next = NULL;
-        *pointerToHead = prev;
+// void ReverseList(Node** pointerToHead, Node* prev, Node* current){
+//     if(current == NULL){
+//         Node* firstNode = *pointerToHead; 
+//         firstNode->next = NULL;
+//         *pointerToHead = prev;
+//         return;
+//     }
+//     ReverseList(pointerToHead, prev->next, current->next);
+//     current->next = prev;
+// }
+
+void ReverseList(Node** pointerToHead, Node* nodePointer){
+    if(nodePointer->next == NULL){
+        *pointerToHead = nodePointer; 
         return;
     }
-    ReverseList(pointerToHead, prev->next, current->next);
-    current->next = prev;
+    ReverseList(pointerToHead, nodePointer->next);
+    nodePointer->next->next = nodePointer;
+    nodePointer->next = NULL;
 }
 
 int main(){
@@ -74,6 +84,6 @@ int main(){
     Push(&head, 5);
     Print(head);
     cout<<"\nReverse: ";
-    ReverseList(&head, head, head->next);
+    ReverseList(&head, head);
     Print(head);
 }
