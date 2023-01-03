@@ -33,7 +33,25 @@ Node* MergeList(Node* head1, Node* head2){
 
 // Recursive Method
 Node* MergeListsRecursive(Node* head1, Node* head2{
+    Node* head = NULL;
+
+    if(head1 == NULL)
+        return head2;
+    else if(head2 == NULL)
+        return head1;
     
+    if(head1->data <= head2->data){
+        head = head1;
+        head->next = MergeList(head1->next, head2);
+        // head->next will be equal to which data is smaller in next round
+        // and then its ->next->next value will be equal to the next duel winner. 
+    }
+    else{
+        head = head2;
+        head->next  = MergeList(head1, head2->next);
+    }
+    // this will return the original head
+    return head; 
 }
 
 int main(){
