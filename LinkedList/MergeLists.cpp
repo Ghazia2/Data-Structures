@@ -32,6 +32,8 @@ Node* MergeList(Node* head1, Node* head2){
 }
 
 // Recursive Method
+// All we're doing is adding smaller data of head1 and head2 to our head over and over.
+// head->next = small(head1->data, head2->data)
 Node* MergeListsRecursive(Node* head1, Node* head2{
     Node* head = NULL;
 
